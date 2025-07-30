@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contacto - Clima por Ciudad</title>
+    <meta
+      name="description"
+      content="Contáctanos para sugerencias, soporte o colaboraciones en Clima por Ciudad."
+    />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="Contacto - Clima por Ciudad" />
+    <meta
+      property="og:description"
+      content="Contáctanos para sugerencias, soporte o colaboraciones en Clima por Ciudad."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://tusitio.com/contacto.html" />
+    <meta property="og:image" content="https://tusitio.com/imagen-clima.jpg" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Contacto - Clima por Ciudad" />
+    <meta
+      name="twitter:description"
+      content="Contáctanos para sugerencias, soporte o colaboraciones en Clima por Ciudad."
+    />
+    <meta name="twitter:image" content="https://tusitio.com/imagen-clima.jpg" />
+    <!-- Datos estructurados JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "name": "Contacto - Clima por Ciudad",
+        "description": "Contáctanos para sugerencias, soporte o colaboraciones en Clima por Ciudad.",
+        "url": "https://tusitio.com/contacto.html"
+      }
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <style>
+      body {
+        background: #f8fafc;
+        color: #1e293b;
+        font-family: "Inter", sans-serif;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        transition: background 0.3s, color 0.3s;
+      }
+      .container {
+        max-width: 420px;
+        width: 100%;
+        margin: 3rem auto 1rem auto;
+        background: #fff;
+        border-radius: 2.2rem;
+        box-shadow: 0 6px 32px rgba(0, 0, 0, 0.10);
+        padding: 2.5rem 2rem 2rem 2rem;
+        transition: background 0.3s, color 0.3s;
+        box-sizing: border-box;
+      }
+      h1 {
+        color: #3b82f6;
+        font-size: 2.1rem;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        transition: color 0.3s;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+      label {
+        font-weight: 500;
+        color: #3b82f6;
+        margin-bottom: 0.3rem;
+        font-size: 1.08rem;
+        transition: color 0.3s;
+      }
+      input,
+      textarea {
+        padding: 1.1rem 1.2rem;
+        border-radius: 1.1rem;
+        border: 1.5px solid #e2e8f0;
+        font-size: 1.08rem;
+        background: #f8fafc;
+        color: #1e293b;
+        resize: none;
+        transition: border 0.2s, background 0.3s, color 0.3s, box-shadow 0.2s;
+        box-shadow: 0 1px 2px rgba(59,130,246,0.03);
+      }
+      input:focus,
+      textarea:focus {
+        border: 1.5px solid #3b82f6;
+        outline: none;
+        background: #e0f2fe;
+        box-shadow: 0 0 0 3px rgba(59,130,246,0.10);
+      }
+      .send-btn, .back-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #3b82f6;
+        color: #fff;
+        padding: 1rem 2.2rem;
+        border-radius: 1.1rem;
+        font-size: 1.15rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s, color 0.3s, transform 0.15s, box-shadow 0.2s;
+        width: 100%;
+        max-width: 100%;
+        gap: 0.7rem;
+        box-shadow: 0 2px 8px rgba(59,130,246,0.08);
+        border: none;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        outline: none;
+        box-sizing: border-box;
+      }
+      .send-btn:hover, .back-btn:hover, .send-btn:focus, .back-btn:focus {
+        background: #2563eb;
+        color: #fff;
+        transform: translateY(-2px) scale(1.03);
+        box-shadow: 0 4px 16px rgba(59,130,246,0.13);
+      }
+      .back-btn {
+        font-size: 1.08rem;
+        font-weight: 500;
+        margin-top: 1.2rem;
+        margin-bottom: 0;
+      }
+      /* Tema oscuro */
+      [data-theme="dark"] body {
+        background: #0f172a;
+        color: #f1f5f9;
+      }
+      [data-theme="dark"] .container {
+        background: #1e293b;
+        color: #f1f5f9;
+      }
+      [data-theme="dark"] h1 {
+        color: #60a5fa;
+      }
+      [data-theme="dark"] label {
+        color: #60a5fa;
+      }
+      [data-theme="dark"] input,
+      [data-theme="dark"] textarea {
+        background: #1e293b;
+        color: #f1f5f9;
+        border: 1.5px solid #334155;
+        box-shadow: 0 1px 2px rgba(96,165,250,0.04);
+      }
+      [data-theme="dark"] input:focus,
+      [data-theme="dark"] textarea:focus {
+        background: #0f172a;
+        border: 1.5px solid #60a5fa;
+        box-shadow: 0 0 0 3px rgba(96,165,250,0.10);
+      }
+      [data-theme="dark"] .send-btn, [data-theme="dark"] .back-btn {
+        background: #60a5fa;
+        color: #0f172a;
+        box-shadow: 0 2px 8px rgba(96,165,250,0.10);
+      }
+      [data-theme="dark"] .send-btn:hover, [data-theme="dark"] .back-btn:hover,
+      [data-theme="dark"] .send-btn:focus, [data-theme="dark"] .back-btn:focus {
+        background: #3b82f6;
+        color: #fff;
+        box-shadow: 0 4px 16px rgba(96,165,250,0.18);
+      }
+      .toast {
+        position: fixed;
+        top: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #3b82f6;
+        color: #fff;
+        padding: 1rem 2rem;
+        border-radius: 1rem;
+        font-size: 1.1rem;
+        font-weight: 500;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+        z-index: 9999;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s, top 0.4s;
+      }
+      .toast.show {
+        opacity: 1;
+        pointer-events: auto;
+        top: 3.5rem;
+      }
+      .toast.error {
+        background: #ef4444;
+      }
+      .cloud-loader-bg {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(248,250,252,0.85);
+        z-index: 99999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.4s;
+        opacity: 1;
+        pointer-events: all;
+      }
+      .cloud-loader-bg.hide {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .cloud-loader {
+        width: 90px;
+        height: 60px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .cloud {
+        width: 60px;
+        height: 36px;
+        background: #3b82f6;
+        border-radius: 50% 50% 40% 40% / 60% 60% 40% 40%;
+        position: absolute;
+        left: 15px;
+        top: 12px;
+        box-shadow: 0 4px 24px #3b82f6aa;
+        animation: cloud-move 1.5s infinite linear;
+      }
+      .cloud:before, .cloud:after {
+        content: '';
+        position: absolute;
+        background: #60a5fa;
+        border-radius: 50%;
+      }
+      .cloud:before {
+        width: 28px; height: 28px;
+        left: -18px; top: 2px;
+      }
+      .cloud:after {
+        width: 22px; height: 22px;
+        left: 38px; top: 8px;
+      }
+      @keyframes cloud-move {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-8px); }
+        100% { transform: translateY(0); }
+      }
+      /* Mejorar responsividad del formulario */
+      @media (max-width: 600px) {
+        .container {
+          max-width: 98vw;
+          padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+        }
+        form {
+          gap: 1rem;
+        }
+        .send-btn, .back-btn {
+          font-size: 1rem;
+          padding: 0.8rem 1rem;
+        }
+        h1 {
+          font-size: 1.3rem;
+        }
+      }
+    </style>
+    <script>
+      (function() {
+        emailjs.init({
+          publicKey: "Z8kXSt-dEQJekJ9im",
+        });
+      })();
+
+      function mostrarToast(mensaje, tipo = 'ok') {
+        let toast = document.getElementById('toast-feedback');
+        if (!toast) {
+          toast = document.createElement('div');
+          toast.id = 'toast-feedback';
+          toast.className = 'toast';
+          document.body.appendChild(toast);
+        }
+        toast.textContent = mensaje;
+        toast.className = 'toast show' + (tipo === 'error' ? ' error' : '');
+        setTimeout(() => {
+          toast.className = 'toast';
+        }, 3500);
+      }
+
+      function aplicarTemaGuardado() {
+        const temaGuardado = localStorage.getItem('temaClimaCiudad');
+        const body = document.body;
+        if (temaGuardado === 'dark') {
+          body.setAttribute('data-theme', 'dark');
+          body.style.background = '#0f172a';
+          body.style.color = '#f1f5f9';
+          document.querySelector('.container').style.background = '#1e293b';
+          document.querySelector('.container').style.color = '#f1f5f9';
+        } else {
+          body.removeAttribute('data-theme');
+          body.style.background = '#f8fafc';
+          body.style.color = '#1e293b';
+          document.querySelector('.container').style.background = '#fff';
+          document.querySelector('.container').style.color = '#1e293b';
+        }
+      }
+      function aplicarIdiomaGuardado() {
+        const idiomaGuardado = localStorage.getItem('idiomaClimaCiudad');
+        if (idiomaGuardado && idiomaGuardado !== document.documentElement.lang) {
+          document.documentElement.lang = idiomaGuardado;
+          // Cambiar el título si es inglés
+          if (idiomaGuardado === 'en') {
+            document.querySelector('h1').innerHTML = '<i class="fas fa-envelope"></i> Contact';
+            document.title = 'Contact - Weather by City';
+            document.querySelector('label[for="nombre"]').textContent = 'Name';
+            document.querySelector('label[for="email"]').textContent = 'Email';
+            document.querySelector('label[for="mensaje"]').textContent = 'Message';
+            document.querySelector('.send-btn').innerHTML = '<i class="fas fa-paper-plane"></i> Send';
+            document.querySelector('.back-btn').innerHTML = '<i class="fas fa-arrow-left"></i> Back to Home';
+          } else {
+            document.querySelector('h1').innerHTML = '<i class="fas fa-envelope"></i> Contacto';
+            document.title = 'Contacto - Clima por Ciudad';
+            document.querySelector('label[for="nombre"]').textContent = 'Nombre';
+            document.querySelector('label[for="email"]').textContent = 'Email';
+            document.querySelector('label[for="mensaje"]').textContent = 'Mensaje';
+            document.querySelector('.send-btn').innerHTML = '<i class="fas fa-paper-plane"></i> Enviar';
+            document.querySelector('.back-btn').innerHTML = '<i class="fas fa-arrow-left"></i> Volver al inicio';
+          }
+        }
+      }
+      document.addEventListener('DOMContentLoaded', () => {
+        aplicarTemaGuardado();
+        aplicarIdiomaGuardado();
+        // Manejar envío del formulario con EmailJS v4
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          emailjs.sendForm('service_2hb4o59', 'template_nmihcgn', this)
+            .then(function() {
+              mostrarToast('¡Mensaje enviado correctamente!');
+              form.reset();
+            }, function(error) {
+              mostrarToast('Error al enviar el mensaje. Intenta de nuevo.', 'error');
+              console.log(error);
+            });
+        });
+        // Loader de nube para navegación
+        function mostrarCloudLoader() {
+          const loader = document.getElementById('cloudLoader');
+          loader.style.display = 'flex';
+          setTimeout(() => loader.classList.remove('hide'), 10);
+        }
+        function ocultarCloudLoader() {
+          const loader = document.getElementById('cloudLoader');
+          loader.classList.add('hide');
+          setTimeout(() => loader.style.display = 'none', 400);
+        }
+        // Mostrar loader al hacer clic en enlaces internos
+        document.querySelectorAll('a[href]').forEach(link => {
+          const url = link.getAttribute('href');
+          if (url && !url.startsWith('http') && !url.startsWith('mailto:') && !url.startsWith('#')) {
+            link.addEventListener('click', function(e) {
+              mostrarCloudLoader();
+            });
+          }
+        });
+        ocultarCloudLoader(); // Ocultar loader al cargar
+      });
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h1><i class="fas fa-envelope"></i> Contacto</h1>
+      <form autocomplete="off">
+        <div>
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" required />
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div>
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="send-btn">
+          <i class="fas fa-paper-plane"></i> Enviar
+        </button>
+      </form>
+      <a href="index.html" class="back-btn"
+        ><i class="fas fa-arrow-left"></i> Volver al inicio</a
+      >
+    </div>
+    <div id="cloudLoader" class="cloud-loader-bg" style="display:none">
+      <div class="cloud-loader">
+        <div class="cloud"></div>
+      </div>
+    </div>
+  </body>
+</html>

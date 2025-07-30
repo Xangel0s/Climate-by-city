@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Términos y condiciones - Clima por Ciudad</title>
+    <meta
+      name="description"
+      content="Lee los términos y condiciones de uso de Clima por Ciudad. Información legal y responsabilidades del usuario."
+    />
+    <!-- Open Graph / Facebook -->
+    <meta
+      property="og:title"
+      content="Términos y condiciones - Clima por Ciudad"
+    />
+    <meta
+      property="og:description"
+      content="Lee los términos y condiciones de uso de Clima por Ciudad. Información legal y responsabilidades del usuario."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://tusitio.com/terminos.html" />
+    <meta property="og:image" content="https://tusitio.com/imagen-clima.jpg" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Términos y condiciones - Clima por Ciudad"
+    />
+    <meta
+      name="twitter:description"
+      content="Lee los términos y condiciones de uso de Clima por Ciudad. Información legal y responsabilidades del usuario."
+    />
+    <meta name="twitter:image" content="https://tusitio.com/imagen-clima.jpg" />
+    <!-- Datos estructurados JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Términos y condiciones - Clima por Ciudad",
+        "description": "Lee los términos y condiciones de uso de Clima por Ciudad. Información legal y responsabilidades del usuario.",
+        "url": "https://tusitio.com/terminos.html"
+      }
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      body {
+        background: #f8fafc;
+        color: #1e293b;
+        font-family: "Inter", sans-serif;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        transition: background 0.3s, color 0.3s;
+      }
+      .container {
+        max-width: 700px;
+        margin: 3rem auto 1rem auto;
+        background: #fff;
+        border-radius: 1.5rem;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+        padding: 2.5rem 2rem 2rem 2rem;
+        transition: background 0.3s, color 0.3s;
+        box-sizing: border-box;
+      }
+      h1 {
+        color: #3b82f6;
+        font-size: 2rem;
+        margin-bottom: 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: color 0.3s;
+      }
+      .terms {
+        font-size: 1.05rem;
+        line-height: 1.7;
+        color: #334155;
+        margin-bottom: 2rem;
+        transition: color 0.3s;
+      }
+      .back-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #3b82f6;
+        color: #fff;
+        padding: 0.7rem 1.5rem;
+        border-radius: 0.75rem;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 1.08rem;
+        transition: background 0.2s, color 0.3s, transform 0.15s, box-shadow 0.2s;
+        gap: 0.7rem;
+        box-shadow: 0 2px 8px rgba(59,130,246,0.08);
+        border: none;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        outline: none;
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 300px;
+      }
+      .back-btn:hover, .back-btn:focus {
+        background: #2563eb;
+        color: #fff;
+        transform: translateY(-2px) scale(1.03);
+        box-shadow: 0 4px 16px rgba(59,130,246,0.13);
+      }
+      /* Tema oscuro */
+      [data-theme="dark"] body {
+        background: #0f172a;
+        color: #f1f5f9;
+      }
+      [data-theme="dark"] .container {
+        background: #1e293b;
+        color: #f1f5f9;
+      }
+      [data-theme="dark"] h1 {
+        color: #60a5fa;
+      }
+      [data-theme="dark"] .terms {
+        color: #cbd5e1;
+      }
+      [data-theme="dark"] .back-btn {
+        background: #60a5fa;
+        color: #0f172a;
+        box-shadow: 0 2px 8px rgba(96,165,250,0.10);
+      }
+      [data-theme="dark"] .back-btn:hover, [data-theme="dark"] .back-btn:focus {
+        background: #3b82f6;
+        color: #fff;
+        box-shadow: 0 4px 16px rgba(96,165,250,0.18);
+      }
+      .cloud-loader-bg {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(248,250,252,0.85);
+        z-index: 99999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.4s;
+        opacity: 1;
+        pointer-events: all;
+      }
+      .cloud-loader-bg.hide {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .cloud-loader {
+        width: 90px;
+        height: 60px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .cloud {
+        width: 60px;
+        height: 36px;
+        background: #3b82f6;
+        border-radius: 50% 50% 40% 40% / 60% 60% 40% 40%;
+        position: absolute;
+        left: 15px;
+        top: 12px;
+        box-shadow: 0 4px 24px #3b82f6aa;
+        animation: cloud-move 1.5s infinite linear;
+      }
+      .cloud:before, .cloud:after {
+        content: '';
+        position: absolute;
+        background: #60a5fa;
+        border-radius: 50%;
+      }
+      .cloud:before {
+        width: 28px; height: 28px;
+        left: -18px; top: 2px;
+      }
+      .cloud:after {
+        width: 22px; height: 22px;
+        left: 38px; top: 8px;
+      }
+      @keyframes cloud-move {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-8px); }
+        100% { transform: translateY(0); }
+      }
+    </style>
+    <script>
+      function aplicarTemaGuardado() {
+        const temaGuardado = localStorage.getItem('temaClimaCiudad');
+        const body = document.body;
+        if (temaGuardado === 'dark') {
+          body.setAttribute('data-theme', 'dark');
+          body.style.background = '#0f172a';
+          body.style.color = '#f1f5f9';
+          document.querySelector('.container').style.background = '#1e293b';
+          document.querySelector('.container').style.color = '#f1f5f9';
+        } else {
+          body.removeAttribute('data-theme');
+          body.style.background = '#f8fafc';
+          body.style.color = '#1e293b';
+          document.querySelector('.container').style.background = '#fff';
+          document.querySelector('.container').style.color = '#1e293b';
+        }
+      }
+      function aplicarIdiomaGuardado() {
+        const idiomaGuardado = localStorage.getItem('idiomaClimaCiudad');
+        if (idiomaGuardado && idiomaGuardado !== document.documentElement.lang) {
+          document.documentElement.lang = idiomaGuardado;
+          // Cambiar el título si es inglés
+          if (idiomaGuardado === 'en') {
+            document.querySelector('h1').innerHTML = '<i class="fas fa-file-contract"></i> Terms and Conditions';
+            document.title = 'Terms and Conditions - Weather by City';
+            document.querySelector('.terms').innerHTML = '<p>Welcome to Weather by City. By using this website, you accept the following terms and conditions. The weather information provided is for informational purposes only and should not be used as the sole source for making critical decisions. We are not responsible for errors, omissions, or delays in the information or for any damages resulting from its use.</p><p>The user agrees to make proper use of the site and not to use it for illegal, fraudulent activities or activities that may harm the experience of other users. We reserve the right to modify these terms at any time.</p><p>For more information, contact us through the contact section.</p>';
+            document.querySelector('.back-btn').innerHTML = '<i class="fas fa-arrow-left"></i> Back to Home';
+          } else {
+            document.querySelector('h1').innerHTML = '<i class="fas fa-file-contract"></i> Términos y condiciones';
+            document.title = 'Términos y condiciones - Clima por Ciudad';
+            document.querySelector('.terms').innerHTML = '<p>Bienvenido a Clima por Ciudad. Al utilizar este sitio web, aceptas los siguientes términos y condiciones. La información meteorológica proporcionada es solo para fines informativos y no debe ser utilizada como única fuente para la toma de decisiones críticas. No nos hacemos responsables por errores, omisiones o retrasos en la información ni por cualquier daño derivado de su uso.</p><p>El usuario se compromete a hacer un uso adecuado del sitio y a no emplearlo para actividades ilícitas, fraudulentas o que puedan dañar la experiencia de otros usuarios. Nos reservamos el derecho de modificar estos términos en cualquier momento.</p><p>Para más información, contáctanos a través de la sección de contacto.</p>';
+            document.querySelector('.back-btn').innerHTML = '<i class="fas fa-arrow-left"></i> Volver al inicio';
+          }
+        }
+      }
+      document.addEventListener('DOMContentLoaded', () => {
+        aplicarTemaGuardado();
+        aplicarIdiomaGuardado();
+      });
+      // Loader de nube para navegación
+      function mostrarCloudLoader() {
+        const loader = document.getElementById('cloudLoader');
+        loader.style.display = 'flex';
+        setTimeout(() => loader.classList.remove('hide'), 10);
+      }
+      function ocultarCloudLoader() {
+        const loader = document.getElementById('cloudLoader');
+        loader.classList.add('hide');
+        setTimeout(() => loader.style.display = 'none', 400);
+      }
+      // Mostrar loader al hacer clic en enlaces internos
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('a[href]').forEach(link => {
+          const url = link.getAttribute('href');
+          if (url && !url.startsWith('http') && !url.startsWith('mailto:') && !url.startsWith('#')) {
+            link.addEventListener('click', function(e) {
+              mostrarCloudLoader();
+            });
+          }
+        });
+        ocultarCloudLoader(); // Ocultar loader al cargar
+      });
+    </script>
+  </head>
+  <body>
+    <div id="cloudLoader" class="cloud-loader-bg" style="display:none">
+      <div class="cloud-loader">
+        <div class="cloud"></div>
+      </div>
+    </div>
+    <div class="container">
+      <h1><i class="fas fa-file-contract"></i> Términos y condiciones</h1>
+      <div class="terms">
+        <p>
+          Bienvenido a Clima por Ciudad. Al utilizar este sitio web, aceptas los
+          siguientes términos y condiciones. La información meteorológica
+          proporcionada es solo para fines informativos y no debe ser utilizada
+          como única fuente para la toma de decisiones críticas. No nos hacemos
+          responsables por errores, omisiones o retrasos en la información ni
+          por cualquier daño derivado de su uso.
+        </p>
+        <p>
+          El usuario se compromete a hacer un uso adecuado del sitio y a no
+          emplearlo para actividades ilícitas, fraudulentas o que puedan dañar
+          la experiencia de otros usuarios. Nos reservamos el derecho de
+          modificar estos términos en cualquier momento.
+        </p>
+        <p>
+          Para más información, contáctanos a través de la sección de contacto.
+        </p>
+      </div>
+      <a href="index.html" class="back-btn"
+        ><i class="fas fa-arrow-left"></i> Volver al inicio</a
+      >
+    </div>
+  </body>
+</html>
